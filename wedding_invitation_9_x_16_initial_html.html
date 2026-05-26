@@ -130,7 +130,7 @@
       box-shadow:var(--shadow-soft);
     }
 
-    .hero-main{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-bottom:18px}
+    .hero-main{flex:0 0 auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;padding-bottom:12px}
     .invite-card{
       width:min(100%,540px);
       padding:clamp(30px,5.4vw,48px) clamp(22px,5vw,40px);
@@ -253,23 +253,45 @@
     .lyrics-box::-webkit-scrollbar-thumb{background:rgba(168,74,66,.25);border-radius:999px}
     .micro-note{margin:8px 0 0!important;font-size:clamp(8px,1.95vw,10px)!important;color:#8b7a6f!important;line-height:1.45!important}
 
-    @media(max-width:520px){
+    @media screen and (max-width:920px){
       .deck{padding:0;background:#e9ded0;overflow-x:hidden}
-      .page{width:100vw;min-height:177.777vw;border-radius:0;margin-bottom:0;padding:20px 18px}
+      .page{
+        display:block!important;
+        width:100vw!important;
+        min-height:auto!important;
+        height:auto!important;
+        max-height:none!important;
+        aspect-ratio:auto!important;
+        border-radius:0;
+        margin:0 0 18px 0!important;
+        padding:20px 18px 28px!important;
+        overflow:visible!important;
+        break-inside:auto!important;
+        page-break-inside:auto!important;
+      }
+      .content{
+        display:flex;
+        flex-direction:column;
+        height:auto!important;
+        min-height:auto!important;
+      }
+      .deck{display:flex;flex-direction:column;gap:0}
+      .page + .page{margin-top:18px!important}
       .page::before{inset:10px;border-radius:20px}
+      .page::after{bottom:18px}
       .hosts{gap:8px}
       .program-item{grid-template-columns:35px 1fr auto;padding:9px 10px;gap:9px;border-radius:16px}
       .num{width:32px;height:32px;border-radius:11px}
       .program-role{max-width:108px}
       .traffic-grid{gap:8px}
       .floral{width:128px;height:128px}
-      .photo-placeholder{width:58%;margin-top:14px}
+      .photo-placeholder{width:min(58%,260px);margin-top:14px}
       .invite-card{padding:24px 20px}
       .venue{font-size:clamp(12px,2.95vw,15px);line-height:1.55}
       .divider{margin:16px auto}
       .scripture{width:100%;font-size:clamp(9.6px,2.25vw,12px);line-height:1.6;white-space:normal;overflow-wrap:break-word}
       .time-info{font-size:clamp(11px,2.55vw,14px);letter-spacing:.02em}
-      .hosts{padding-bottom:20px}
+      .hosts{padding-bottom:0;margin-top:14px;position:relative;z-index:3}
       .mini-card{font-size:clamp(10px,2.3vw,12.5px);padding:8px 8px}
       .song-row{grid-template-columns:82px 1fr;gap:8px}
       .scripture-grid{gap:8px}
