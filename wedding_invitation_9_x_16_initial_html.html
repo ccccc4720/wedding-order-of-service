@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>賴柏延 & 馬琳｜婚禮電子喜帖初版</title>
+  <meta name="description" content="賴柏延與馬琳婚禮電子喜帖｜四頁 9:16 手機直式版" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700;900&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6efe6;
+      --bg-2:#efe4d6;
+      --card:#fffdf9;
+      --ink:#2f2a27;
+      --muted:#75685d;
+      --line:rgba(90,70,55,.14);
+      --accent:#a84a42;
+      --accent-soft:rgba(168,74,66,.1);
+      --gold:#c79b4a;
+      --green:#7c8d74;
+      --shadow:0 18px 46px rgba(68,45,30,.10);
+      --shadow-soft:0 8px 24px rgba(68,45,30,.065);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:#e9ded0}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:"LXGW WenKai TC","Noto Serif TC",serif;
+      background:linear-gradient(135deg,var(--bg) 0%,var(--bg-2) 100%);
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+    a{color:inherit;text-decoration:none}
+    strong{font-weight:700}
+
+    .deck{width:min(100vw,720px);margin:0 auto;padding:24px 0}
+
+    .page{
+      position:relative;
+      width:min(100vw,720px);
+      aspect-ratio:9/16;
+      min-height:calc(min(100vw,720px) * 16 / 9);
+      overflow:hidden;
+      margin:0 auto 26px;
+      padding:clamp(28px,5.2vw,46px);
+      border-radius:32px;
+      background:
+        radial-gradient(circle at 14% 8%,rgba(255,255,255,.9),transparent 28%),
+        linear-gradient(145deg,#fbf4ec 0%,#efe1d2 100%);
+      box-shadow:var(--shadow);
+      isolation:isolate;
+    }
+    .page::before{
+      content:"";
+      position:absolute;
+      inset:16px;
+      border:1px solid rgba(168,74,66,.13);
+      border-radius:24px;
+      pointer-events:none;
+      z-index:0;
+    }
+    .page::after{
+      content:"";
+      position:absolute;
+      left:28px;
+      right:28px;
+      bottom:28px;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(168,74,66,.28),transparent);
+      z-index:1;
+    }
+    .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column}
+
+    .topline{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      font-family:"Special Elite",monospace;
+      letter-spacing:.16em;
+      color:var(--muted);
+      font-size:clamp(10px,2.3vw,13px);
+      text-transform:uppercase;
+    }
+    .seal{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      color:#fffdf9;
+      background:linear-gradient(135deg,var(--accent),#873a35);
+      box-shadow:0 12px 24px rgba(168,74,66,.22);
+      font-size:21px;
+      font-weight:900;
+      transform:rotate(-3deg);
+    }
+    .heart-seal{
+      color:#fffdf9;
+      font-family:"Noto Serif TC",serif;
+      font-size:26px;
+      line-height:1;
+      font-weight:900;
+    }
+
+    .floral{position:absolute;z-index:1;width:150px;height:150px;opacity:.48;pointer-events:none}
+    .floral svg{width:100%;height:100%}
+    .floral.tl{left:-42px;top:-34px;transform:rotate(-18deg)}
+    .floral.br{right:-50px;bottom:-42px;transform:rotate(158deg)}
+    .floral.tr{right:-64px;top:120px;transform:rotate(36deg);opacity:.3}
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:max-content;
+      max-width:100%;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.68);
+      border:1px solid rgba(168,74,66,.12);
+      color:#7b6658;
+      font-family:"Special Elite",monospace;
+      font-size:12px;
+      letter-spacing:.14em;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .hero-main{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-bottom:18px}
+    .invite-card{
+      width:min(100%,540px);
+      padding:clamp(30px,5.4vw,48px) clamp(22px,5vw,40px);
+      border-radius:28px;
+      background:rgba(255,253,249,.82);
+      border:1px solid rgba(255,255,255,.74);
+      box-shadow:var(--shadow-soft);
+      backdrop-filter:blur(4px);
+      position:relative;
+      overflow:hidden;
+    }
+    .invite-card::before{
+      content:"";
+      position:absolute;
+      inset:18px;
+      border:1px solid rgba(168,74,66,.1);
+      border-radius:20px;
+      pointer-events:none;
+    }
+    .names{margin:8px 0 6px;font-size:clamp(34px,7vw,54px);line-height:1.12;font-weight:900;letter-spacing:.08em;color:#392d28}
+    .names .amp{display:block;margin:.1em 0;font-family:"Special Elite",monospace;font-size:.42em;letter-spacing:.05em;color:var(--accent)}
+    .english-names{font-family:"Special Elite",monospace;letter-spacing:.12em;color:var(--accent);font-size:clamp(15px,3.4vw,20px);margin:4px 0 10px}
+    .date{margin-top:10px;color:#6f6156;font-size:clamp(18px,4vw,24px);letter-spacing:.12em;font-weight:700}
+    .time-info{margin-top:6px;color:#6f6156;font-size:clamp(13px,2.8vw,16px);line-height:1.35;letter-spacing:.04em;font-weight:600;white-space:nowrap}
+    .time-info span{font-size:.92em;color:var(--muted);font-weight:400}
+    .venue{margin:14px auto 0;color:#6f6156;line-height:1.75;font-size:clamp(14px,3.1vw,18px)}
+    .divider{width:82px;height:1px;margin:24px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+    .scripture{margin:0 auto;width:min(100%,520px);color:#6d5e55;font-size:clamp(13px,2.65vw,15.5px);line-height:1.75;white-space:nowrap}
+    .photo-placeholder{
+      margin:24px auto 0;
+      width:min(72%,340px);
+      aspect-ratio:4/5;
+      border-radius:20px;
+      background:linear-gradient(135deg,rgba(255,255,255,.86),rgba(247,238,227,.86));
+      border:1px dashed rgba(168,74,66,.3);
+      box-shadow:0 12px 26px rgba(68,45,30,.07);
+      display:grid;
+      place-items:center;
+      padding:16px;
+    }
+    .photo-placeholder span{color:#8a776a;font-size:14px;line-height:1.7;letter-spacing:.08em}
+    .photo-placeholder img{width:100%;height:100%;object-fit:cover;border-radius:16px;display:block}
+    .hosts{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-top:auto;padding-bottom:16px}
+    .mini-card{
+      padding:10px 10px;
+      border-radius:14px;
+      background:rgba(255,255,255,.66);
+      border:1px solid rgba(90,70,55,.08);
+      box-shadow:var(--shadow-soft);
+      color:#5f5148;
+      line-height:1.45;
+      font-size:clamp(11px,2.45vw,14px);
+    }
+    .mini-card .key{display:block;font-family:"Special Elite",monospace;letter-spacing:.12em;color:var(--muted);font-size:10px;margin-bottom:2px}
+
+    .page-title{margin:28px 0 0;text-align:center}
+    .page-title .en{font-family:"Special Elite",monospace;letter-spacing:.16em;color:var(--muted);font-size:12px;text-transform:uppercase}
+    .page-title h2{margin:8px 0 0;font-size:clamp(34px,7vw,54px);line-height:1.12;letter-spacing:.12em}
+    .page-title p{margin:10px auto 0;width:min(100%,450px);color:var(--muted);font-size:clamp(13px,3vw,16px);line-height:1.8}
+
+    .program-wrap{margin-top:18px;flex:1;display:grid;align-content:start;gap:10px}
+    .program-item{
+      display:grid;
+      grid-template-columns:38px 1fr auto;
+      gap:10px;
+      align-items:center;
+      padding:11px 12px;
+      border-radius:18px;
+      background:rgba(255,255,255,.68);
+      border:1px solid rgba(90,70,55,.08);
+      box-shadow:0 8px 20px rgba(68,45,30,.05);
+    }
+    .program-item.feature{background:linear-gradient(135deg,rgba(168,74,66,.08),rgba(199,155,74,.09)),rgba(255,255,255,.72);border-color:rgba(168,74,66,.13)}
+    .num{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;background:#fffaf4;color:var(--accent);font-family:"Special Elite",monospace;font-size:12px;box-shadow:inset 0 0 0 1px rgba(168,74,66,.12)}
+    .program-title{font-weight:700;font-size:clamp(14px,3.3vw,18px);letter-spacing:.08em}
+    .program-note{margin-top:1px;color:var(--muted);font-size:clamp(10px,2.45vw,13px);line-height:1.45}
+    .program-role{justify-self:end;max-width:150px;color:#7b6658;font-size:clamp(10px,2.4vw,13px);line-height:1.38;text-align:right}
+    .program-footer{margin-top:12px;padding:12px 16px;border-radius:18px;background:rgba(255,255,255,.58);border:1px solid rgba(90,70,55,.08);text-align:center;color:#6b5b51;font-size:clamp(11px,2.6vw,14px);line-height:1.6}
+
+    .traffic-layout{margin-top:18px;flex:1;display:flex;flex-direction:column;gap:12px;justify-content:flex-start}
+    .traffic-card{border-radius:20px;background:rgba(255,255,255,.7);border:1px solid rgba(90,70,55,.09);box-shadow:var(--shadow-soft);padding:16px}
+    .traffic-card h3{margin:0 0 7px;color:#443832;font-size:clamp(16px,3.4vw,21px);letter-spacing:.08em}
+    .traffic-card p{margin:5px 0;color:var(--muted);font-size:clamp(11px,2.75vw,15px);line-height:1.7}
+    .traffic-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .map-card{padding:10px;border-radius:22px;background:rgba(255,255,255,.7);border:1px solid rgba(90,70,55,.08);box-shadow:var(--shadow-soft)}
+    .map-card svg{width:100%;display:block;border-radius:16px;background:linear-gradient(180deg,#fffbf5,#f2e7d8)}
+    .google-map-frame{height:clamp(220px,48vw,330px);border-radius:16px;overflow:hidden;border:1px solid rgba(90,70,55,.1);box-shadow:var(--shadow-soft);background:#fff}
+    .google-map-frame iframe{width:100%;height:100%;border:0;display:block}
+    .map-note{margin:9px 4px 0;color:var(--muted);font-size:clamp(10px,2.3vw,13px);line-height:1.55;text-align:center}
+    .map-label{font-family:"LXGW WenKai TC","Noto Serif TC",serif;fill:#3e342f;font-size:18px;font-weight:700;letter-spacing:.04em}
+    .map-small{fill:#75685d;font-size:14px;font-weight:600}
+    .route{fill:none;stroke:#a84a42;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 16}
+    .road{fill:none;stroke:#d7c6b2;stroke-width:14;stroke-linecap:round}
+    .pin{fill:#a84a42;filter:drop-shadow(0 6px 6px rgba(168,74,66,.18))}
+    .parking{fill:#c79b4a;filter:drop-shadow(0 6px 6px rgba(168,74,66,.1))}
+    .cta{display:flex;gap:10px;margin-top:8px}
+    .btn{flex:1;display:flex;align-items:center;justify-content:center;min-height:40px;padding:10px 12px;border-radius:14px;background:linear-gradient(135deg,#b5524a,#8f3a35);color:#fff;font-size:clamp(11px,2.65vw,14px);box-shadow:0 10px 20px rgba(168,74,66,.2)}
+    .btn.secondary{background:#fff;color:var(--accent);border:1px solid rgba(168,74,66,.18);box-shadow:var(--shadow-soft)}
+    .footer-line{margin-top:auto;text-align:center;color:var(--muted);font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.14em}
+
+    .worship-layout{margin-top:18px;flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;justify-content:stretch}
+    .worship-layout .section-card{min-height:0;display:flex;flex-direction:column}
+    .worship-layout .section-card:nth-child(1){flex:1.05}
+    .worship-layout .section-card:nth-child(2){flex:1.8}
+    .worship-layout .section-card:nth-child(3){flex:.95}
+    .section-card{border-radius:20px;background:rgba(255,255,255,.7);border:1px solid rgba(90,70,55,.08);box-shadow:var(--shadow-soft);padding:14px}
+    .section-card h3{margin:0 0 8px;color:#443832;font-size:clamp(15px,3.4vw,20px);letter-spacing:.08em}
+    .scripture-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;min-height:0}
+    .scripture-box{padding:12px;border-radius:16px;background:rgba(124,141,116,.1);border:1px solid rgba(124,141,116,.19);color:#5f6858;min-height:150px;max-height:none;overflow:auto}
+    .scripture-box strong{display:block;color:#4d5747;font-size:clamp(12px,2.8vw,15px);margin-bottom:6px}
+    .scripture-box p{margin:0;font-size:clamp(9px,2.05vw,11.5px);line-height:1.55;color:#6f6156;white-space:pre-line}
+    .scripture-box::-webkit-scrollbar{width:5px}
+    .scripture-box::-webkit-scrollbar-thumb{background:rgba(124,141,116,.28);border-radius:999px}
+    .song-list{display:grid;gap:8px;flex:1;min-height:0;grid-template-rows:1.25fr 1fr 1fr}
+    .song-row{display:grid;grid-template-columns:94px 1fr;gap:10px;align-items:stretch;padding:9px 10px;border-radius:16px;background:rgba(255,250,244,.66);border:1px solid rgba(90,70,55,.07);min-height:0}
+    .song-title{color:var(--accent);font-weight:700;font-size:clamp(11px,2.65vw,14px);line-height:1.35}
+    .lyrics-box{height:100%;max-height:none;overflow:auto;padding:8px 10px;border-radius:13px;background:rgba(168,74,66,.05);border:1px dashed rgba(168,74,66,.21);color:#7b6658;font-size:clamp(9px,2.05vw,11.5px);line-height:1.55;white-space:pre-line}
+    .lyrics-box.tall{max-height:none}
+    .lyrics-box::-webkit-scrollbar{width:5px}
+    .lyrics-box::-webkit-scrollbar-thumb{background:rgba(168,74,66,.25);border-radius:999px}
+    .micro-note{margin:8px 0 0!important;font-size:clamp(8px,1.95vw,10px)!important;color:#8b7a6f!important;line-height:1.45!important}
+
+    @media(max-width:520px){
+      .deck{padding:0;background:#e9ded0}
+      .page{width:100vw;min-height:177.777vw;border-radius:0;margin-bottom:0;padding:24px 22px}
+      .page::before{inset:10px;border-radius:20px}
+      .hosts{gap:8px}
+      .program-item{grid-template-columns:35px 1fr auto;padding:9px 10px;gap:9px;border-radius:16px}
+      .num{width:32px;height:32px;border-radius:11px}
+      .program-role{max-width:108px}
+      .traffic-grid{gap:8px}
+      .floral{width:128px;height:128px}
+      .photo-placeholder{width:66%;margin-top:20px}
+      .song-row{grid-template-columns:82px 1fr;gap:8px}
+      .scripture-grid{gap:8px}
+    }
+
+    @page{
+      size:9in 16in;
+      margin:0;
+    }
+
+    @media print{
+      html,body{
+        width:9in;
+        height:16in;
+        margin:0!important;
+        padding:0!important;
+        background:#fff!important;
+        overflow:visible!important;
+        -webkit-print-color-adjust:exact;
+        print-color-adjust:exact;
+      }
+      .deck{
+        width:9in!important;
+        margin:0!important;
+        padding:0!important;
+        background:#fff!important;
+      }
+      .page{
+        width:9in!important;
+        height:16in!important;
+        min-height:0!important;
+        max-height:none!important;
+        aspect-ratio:auto!important;
+        margin:0!important;
+        padding:.36in!important;
+        border-radius:0!important;
+        box-shadow:none!important;
+        overflow:hidden!important;
+        break-after:page;
+        page-break-after:always;
+      }
+      .page:last-child{
+        break-after:auto;
+        page-break-after:auto;
+      }
+      .page::before{
+        inset:.18in!important;
+        border-radius:.22in!important;
+      }
+      .page::after{
+        left:.3in!important;
+        right:.3in!important;
+        bottom:.3in!important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <!-- Page 1: 喜帖 -->
+    <section class="page page-1" aria-label="婚禮喜帖">
+      <div class="floral tl" aria-hidden="true">
+        <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M86 156C76 110 78 69 105 22" stroke="#7C8D74" stroke-width="4" stroke-linecap="round"/>
+          <path d="M91 124C66 118 46 105 30 84" stroke="#7C8D74" stroke-width="3" stroke-linecap="round"/>
+          <path d="M92 91C116 84 133 69 148 44" stroke="#7C8D74" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="48" cy="101" rx="12" ry="20" transform="rotate(-44 48 101)" fill="#B54848" opacity=".52"/>
+          <ellipse cx="132" cy="59" rx="11" ry="18" transform="rotate(34 132 59)" fill="#D6AB54" opacity=".55"/>
+          <ellipse cx="73" cy="126" rx="9" ry="16" transform="rotate(-53 73 126)" fill="#7C8D74" opacity=".28"/>
+        </svg>
+      </div>
+      <div class="floral br" aria-hidden="true">
+        <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M86 156C76 110 78 69 105 22" stroke="#7C8D74" stroke-width="4" stroke-linecap="round"/>
+          <path d="M91 124C66 118 46 105 30 84" stroke="#7C8D74" stroke-width="3" stroke-linecap="round"/>
+          <path d="M92 91C116 84 133 69 148 44" stroke="#7C8D74" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="48" cy="101" rx="12" ry="20" transform="rotate(-44 48 101)" fill="#B54848" opacity=".52"/>
+          <ellipse cx="132" cy="59" rx="11" ry="18" transform="rotate(34 132 59)" fill="#D6AB54" opacity=".55"/>
+        </svg>
+      </div>
+      <div class="content">
+        <header class="topline">
+          <span>Wedding Invitation</span>
+          <span class="seal heart-seal" aria-label="love">♥</span>
+        </header>
+
+        <div class="hero-main">
+          <div class="invite-card">
+            <h1 class="names">賴柏延<span class="amp">&amp;</span>馬琳</h1>
+            <div class="english-names">Mickey &amp; Mary</div>
+            <div class="date">2026・30 May・SAT.</div>
+            <div class="time-info">10:00–13:00 <span>(9:30 開始進場)</span></div>
+            <div class="venue">台中旌旗教會二樓副堂<br>台中市南屯區文心南五路三段 160 號</div>
+            <div class="divider"></div>
+            <p class="scripture">誠摯邀請您蒞臨，與我們一同在主裡見證愛與盟約的時刻。</p>
+            <div class="photo-placeholder"><img src="./Wedding_Figure.jpeg" alt="Mickey and Mary 婚禮插圖"></div>
+          </div>
+        </div>
+
+        <div class="hosts">
+          <div class="mini-card"><span class="key">HOST</span>男方主婚人｜<strong>陳慧淳 女士</strong></div>
+          <div class="mini-card"><span class="key">CEREMONY</span>司禮｜<strong>劉百淵 弟兄</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 2: 程序單 -->
+    <section class="page page-2" aria-label="婚禮程序單">
+      <div class="content">
+        <header class="topline">
+          <span>Wedding Ceremony</span>
+          <span>2026.05.30</span>
+        </header>
+
+        <div class="page-title">
+          <div class="en">Order of Service</div>
+          <h2>婚禮程序</h2>
+          <p>把每一個神聖時刻，做成一首有節奏的愛之歌。</p>
+        </div>
+
+        <div class="program-wrap">
+          <div class="program-item">
+            <div class="num">01</div>
+            <div><div class="program-title">序幕</div><div class="program-note">讓你知道我們的故事</div></div>
+            <div class="program-role">司禮</div>
+          </div>
+          <div class="program-item feature">
+            <div class="num">02</div>
+            <div><div class="program-title">進場</div><div class="program-note">門開了，故事也正式開始</div></div>
+            <div class="program-role">花童<br>賴柏延、馬琳</div>
+          </div>
+          <div class="program-item">
+            <div class="num">03</div>
+            <div><div class="program-title">敬拜・禱告</div><div class="program-note">將天敞開・祢為何對我那麼好</div></div>
+            <div class="program-role">敬拜團<br>會眾</div>
+          </div>
+          <div class="program-item feature">
+            <div class="num">04</div>
+            <div><div class="program-title">讀經</div><div class="program-note">創世記 2:18-24・馬可福音 10:6-9</div></div>
+            <div class="program-role">曾昭榮 林秀真 夫婦<br>伍宥融 黃思曉 夫婦</div>
+          </div>
+          <div class="program-item">
+            <div class="num">05</div>
+            <div><div class="program-title">勉勵</div><div class="program-note">給賴柏延、馬琳一份帶著祝福的提醒</div></div>
+            <div class="program-role">陳俞任</div>
+          </div>
+          <div class="program-item feature">
+            <div class="num">06</div>
+            <div><div class="program-title">證婚</div><div class="program-note">誓詞・誓約・交換信物・揭紗・同心燭・聖餐・宣告</div></div>
+            <div class="program-role">蔡明睿<br>賴柏延、馬琳</div>
+          </div>
+          <div class="program-item feature">
+            <div class="num">07</div>
+            <div><div class="program-title">獻詩・謝親恩</div><div class="program-note">唱出誓言 | 感謝養育之恩</div></div>
+            <div class="program-role">詩班<br>賴柏延、馬琳</div>
+          </div>
+          <div class="program-item">
+            <div class="num">08</div>
+            <div><div class="program-title">回應詩歌・祝禱</div><div class="program-note">回應詩歌〈恩典之路〉，用祝福鋪墊禮成</div></div>
+            <div class="program-role">敬拜團<br>蔡明睿</div>
+          </div>
+          <div class="program-item feature">
+            <div class="num">09</div>
+            <div><div class="program-title">禮成・合影・Buffet</div><div class="program-note">留下合照，然後一起享用 Buffet</div></div>
+            <div class="program-role">全體貴賓</div>
+          </div>
+        </div>
+
+        <div class="program-footer">請賓客在禮成後依工作人員引導合影；合影後備有 Buffet。</div>
+      </div>
+    </section>
+
+    <!-- Page 3: 交通資訊與地圖 -->
+    <section class="page page-3" aria-label="交通資訊與簡易地圖">
+      <div class="floral tl" aria-hidden="true">
+        <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M86 156C76 110 78 69 105 22" stroke="#7C8D74" stroke-width="4" stroke-linecap="round"/>
+          <path d="M91 124C66 118 46 105 30 84" stroke="#7C8D74" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="48" cy="101" rx="12" ry="20" transform="rotate(-44 48 101)" fill="#B54848" opacity=".52"/>
+          <ellipse cx="132" cy="59" rx="11" ry="18" transform="rotate(34 132 59)" fill="#D6AB54" opacity=".55"/>
+        </svg>
+      </div>
+      <div class="content">
+        <header class="topline">
+          <span>Traffic Guide</span>
+          <span>Taichung</span>
+        </header>
+
+        <div class="page-title">
+          <div class="en">Come Celebrate With Us</div>
+          <h2>交通資訊</h2>
+          <p>願你一路平安、輕鬆抵達，和我們一起收藏這一天。</p>
+        </div>
+
+        <div class="traffic-layout">
+          <div class="traffic-card">
+            <h3>婚禮地點</h3>
+            <p><strong>台中旌旗教會二樓副堂</strong></p>
+            <p>台中市南屯區文心南五路三段 160 號</p>
+          </div>
+
+          <div class="map-card" aria-label="Google 地圖">
+            <div class="google-map-frame">
+              <iframe src="https://www.google.com/maps?q=%E5%8F%B0%E4%B8%AD%E6%97%8C%E6%97%97%E6%95%99%E6%9C%83&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="台中旌旗教會 Google Map"></iframe>
+            </div>
+            <p class="map-note">地圖以 Google Maps 為準；停車建議搜尋「正德醫院地下停車場」。</p>
+          </div>
+
+          <div class="traffic-grid">
+            <div class="traffic-card">
+              <h3>自行開車<br>停車</h3>
+              <p>國道一號下 <strong>南屯交流道</strong>，往台中方向；建議停放於 <strong>正德醫院地下停車場</strong> 後步行至教會。</p>
+            </div>
+            <div class="traffic-card">
+              <h3>大眾運輸</h3>
+              <p>台中火車站搭 75 號至「黎明向上路口」；高鐵台中站搭 160 號至「向上永春東七路」。</p>
+            </div>
+          </div>
+
+          <div class="cta">
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%8F%B0%E4%B8%AD%E6%97%8C%E6%97%97%E6%95%99%E6%9C%83" target="_blank" rel="noopener">開啟 Google Maps</a>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&query=%E6%AD%A3%E5%BE%B7%E9%86%AB%E9%99%A2" target="_blank" rel="noopener">停車場導航</a>
+          </div>
+        </div>
+
+        <div class="footer-line">Mickey and Mary</div>
+      </div>
+    </section>
+
+    <!-- Page 4: 讀經經文與敬拜詩歌 -->
+    <section class="page page-4" aria-label="讀經經文與敬拜詩歌">
+      <div class="floral br" aria-hidden="true">
+        <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M86 156C76 110 78 69 105 22" stroke="#7C8D74" stroke-width="4" stroke-linecap="round"/>
+          <path d="M91 124C66 118 46 105 30 84" stroke="#7C8D74" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="48" cy="101" rx="12" ry="20" transform="rotate(-44 48 101)" fill="#B54848" opacity=".52"/>
+          <ellipse cx="132" cy="59" rx="11" ry="18" transform="rotate(34 132 59)" fill="#D6AB54" opacity=".55"/>
+        </svg>
+      </div>
+      <div class="content">
+        <header class="topline">
+          <span>Scripture & Worship</span>
+          <span>Love Never Fails</span>
+        </header>
+
+        <div class="page-title">
+          <div class="en">Words & Songs</div>
+          <h2>經文與敬拜</h2>
+          <p>在神的話語中立約，也用詩歌回應祂的恩典。</p>
+        </div>
+
+        <div class="worship-layout">
+          <div class="section-card">
+            <h3>讀經經文</h3>
+            <div class="scripture-grid">
+              <div class="scripture-box">
+                <strong>創世記 2:18-24</strong>
+                <p>18 耶和華神說：「那人獨居不好，我要為他造一個配偶幫助他。」
+19 耶和華神用土所造成的野地各樣走獸和空中各樣飛鳥都帶到那人面前，看他叫甚麼。那人怎樣叫各樣的活物，那就是他的名字。
+20 那人便給一切牲畜和空中飛鳥、野地走獸都起了名；只是那人沒有遇見配偶幫助他。
+21 耶和華神使他沉睡，他就睡了；於是取下他的一條肋骨，又把肉合起來。
+22 耶和華神就用那人身上所取的肋骨造成一個女人，領他到那人跟前。
+23 那人說：「這是我骨中的骨，肉中的肉，可以稱他為女人，因為他是從男人身上取出來的。」
+24 因此，人要離開父母，與妻子連合，二人成為一體。</p>
+              </div>
+              <div class="scripture-box">
+                <strong>馬可福音 10:6-9</strong>
+                <p>6 但從起初創造的時候，神造人是造男造女。
+7 因此，人要離開父母，與妻子連合，二人成為一體。
+8 既然如此，夫妻不再是兩個人，乃是一體的了。
+9 所以神配合的，人不可分開。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-card">
+            <h3>敬拜與回應詩歌</h3>
+            <div class="song-list">
+              <div class="song-row">
+                <div class="song-title">1. 將天敞開</div>
+                <div class="lyrics-box tall">將天敞開 祢的榮耀降下來
+將天敞開 祢的同在降下來
+將天敞開 祢的榮耀降下來
+萬國讚嘆祢 祢是榮耀君王
+天上地下 合一敬拜
+歡呼耶穌基督 聖潔羔羊 榮耀歸於祢
+天上地下 在永恆裡敬拜
+哈利路亞 哈利路亞
+將天敞開 祢的榮耀降下來
+將天敞開 祢的同在降下來
+將天敞開 祢的榮耀降下來
+萬國讚嘆祢 祢是榮耀君王
+天上地下 合一敬拜
+歡呼耶穌基督 聖潔羔羊 榮耀歸於祢
+天上地下 在永恆裡敬拜
+哈利路亞 哈利路亞
+神就在這裡 我們歡迎祢
+讓一切焦點轉向祢
+神就在這裡 我們歡迎祢
+寶座前敬拜不停息
+將天敞開 祢的榮耀降下來
+將天敞開 祢的同在降下來
+將天敞開 祢的榮耀降下來
+將天敞開 祢的同在降下來
+將天敞開 祢的榮耀降下來
+將天敞開 祢的同在降下來
+將天敞開 祢的榮耀降下來
+萬國讚嘆祢 祢是榮耀君王
+天上地下 合一敬拜
+歡呼耶穌基督 聖潔羔羊 榮耀歸於祢
+天上地下 在永恆裡敬拜
+哈利路亞 哈利路亞</div>
+              </div>
+              <div class="song-row">
+                <div class="song-title">2. 祢為何對我這麼好</div>
+                <div class="lyrics-box">走過熙攘人群 踏遍海角天涯 找不到一份愛像耶穌
+祂撫慰我心 祂懷抱我靈 測不透的 不求回報的愛情
+愛到為我降生 愛到為我受死 愛到體恤我一切軟弱
+祂柔聲呼喚 祂耐心守候 永不停息 無怨無悔的愛情
+祂為何對我這麼好 我雖然不好 祂卻聽我每個祈禱
+或在寧靜清晨 或在傷心夜裡 祂為何對我這麼好
+我雖然不配 祂還愛我如同珍寶 此情山高海深
+主祢為何對我這麼的好 主祢為何對我這麼好</div>
+              </div>
+              <div class="song-row">
+                <div class="song-title">回應詩歌<br>恩典之路</div>
+                <div class="lyrics-box">祢是我的主 引我走正義路
+高山或低谷 都是祢在保護
+萬人中唯獨 祢愛我認識我
+永遠不變的應許
+這一生 都是祝福
+一步又一步 這是恩典之路
+祢愛 祢手
+將我緊緊抓住
+一步又一步 這是盼望之路
+祢愛 祢手
+牽引我走這人生路
+祢是我的主 引我走正義路
+高山或低谷 都是祢在保護
+萬人中唯獨 祢愛我認識我
+永遠不變的應許
+這一生 都是祝福
+一步又一步 這是恩典之路
+祢愛 祢手
+將我緊緊抓住
+一步又一步 這是盼望之路
+祢愛 祢手
+牽引我走這人生路
+一步又一步 這是恩典之路
+祢愛（祢愛） 祢手（祢手）
+將我緊緊抓住
+一步又一步 這是盼望之路
+祢愛 祢手
+牽引我走這人生路
+祢愛 祢手
+牽引我走這人生路</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-card">
+            <h3>獻詩</h3>
+            <div class="song-row">
+              <div class="song-title">誓言</div>
+              <div class="lyrics-box">生命總會有神獨特帶領 祂的計劃是多麼美麗
+走在不同軌跡的兩個人 在神計劃中相遇
+富足貧窮
+健康病痛
+我都願陪你度過
+此時此刻
+立下誓言
+我只想對你說
+我願意順境逆境一生忠誠到底
+在神面前立下的誓言 刻畫在我們指間
+愛是凡事忍耐 凡事相信
+雖我們不完美 仍要靠主堅定持守這誓言
+前方雖有困難 仍要一同經歷
+愛的真諦永遠都不忘記
+雖我們不完美 但我們卻有一位完美的神</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-line">Mickey and Mary</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
