@@ -158,10 +158,10 @@
     .time-info span{font-size:.92em;color:var(--muted);font-weight:400}
     .venue{margin:14px auto 0;color:#6f6156;line-height:1.75;font-size:clamp(14px,3.1vw,18px)}
     .divider{width:82px;height:1px;margin:24px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-    .scripture{margin:0 auto;width:min(100%,520px);color:#6d5e55;font-size:clamp(13px,2.65vw,15.5px);line-height:1.75;white-space:nowrap}
+    .scripture{margin:0 auto;width:min(100%,520px);color:#6d5e55;font-size:clamp(12px,2.35vw,14.5px);line-height:1.75;white-space:nowrap}
     .photo-placeholder{
-      margin:24px auto 0;
-      width:min(72%,340px);
+      margin:20px auto 0;
+      width:min(64%,310px);
       aspect-ratio:4/5;
       border-radius:20px;
       background:linear-gradient(135deg,rgba(255,255,255,.86),rgba(247,238,227,.86));
@@ -254,8 +254,8 @@
     .micro-note{margin:8px 0 0!important;font-size:clamp(8px,1.95vw,10px)!important;color:#8b7a6f!important;line-height:1.45!important}
 
     @media(max-width:520px){
-      .deck{padding:0;background:#e9ded0}
-      .page{width:100vw;min-height:177.777vw;border-radius:0;margin-bottom:0;padding:24px 22px}
+      .deck{padding:0;background:#e9ded0;overflow-x:hidden}
+      .page{width:100vw;min-height:177.777vw;border-radius:0;margin-bottom:0;padding:20px 18px}
       .page::before{inset:10px;border-radius:20px}
       .hosts{gap:8px}
       .program-item{grid-template-columns:35px 1fr auto;padding:9px 10px;gap:9px;border-radius:16px}
@@ -263,7 +263,14 @@
       .program-role{max-width:108px}
       .traffic-grid{gap:8px}
       .floral{width:128px;height:128px}
-      .photo-placeholder{width:66%;margin-top:20px}
+      .photo-placeholder{width:58%;margin-top:14px}
+      .invite-card{padding:24px 20px}
+      .venue{font-size:clamp(12px,2.95vw,15px);line-height:1.55}
+      .divider{margin:16px auto}
+      .scripture{width:100%;font-size:clamp(9.6px,2.25vw,12px);line-height:1.6;white-space:normal;overflow-wrap:break-word}
+      .time-info{font-size:clamp(11px,2.55vw,14px);letter-spacing:.02em}
+      .hosts{padding-bottom:20px}
+      .mini-card{font-size:clamp(10px,2.3vw,12.5px);padding:8px 8px}
       .song-row{grid-template-columns:82px 1fr;gap:8px}
       .scripture-grid{gap:8px}
     }
