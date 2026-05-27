@@ -33,6 +33,9 @@
       background:linear-gradient(135deg,var(--bg) 0%,var(--bg-2) 100%);
       -webkit-print-color-adjust:exact;
       print-color-adjust:exact;
+      -webkit-overflow-scrolling:touch;
+      overscroll-behavior-y:auto;
+      touch-action:pan-y;
     }
     a{color:inherit;text-decoration:none}
     strong{font-weight:700}
@@ -169,10 +172,10 @@
       box-shadow:0 12px 26px rgba(68,45,30,.07);
       display:grid;
       place-items:center;
-      padding:16px;
+      padding:5px;
     }
     .photo-placeholder span{color:#8a776a;font-size:14px;line-height:1.7;letter-spacing:.08em}
-    .photo-placeholder img{width:100%;height:100%;object-fit:cover;border-radius:16px;display:block}
+    .photo-placeholder img{width:100%;height:100%;object-fit:cover;border-radius:15px;display:block}
     .hosts{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-top:auto;padding-bottom:16px}
     .mini-card{
       padding:10px 10px;
@@ -218,7 +221,7 @@
     .map-card{padding:10px;border-radius:22px;background:rgba(255,255,255,.7);border:1px solid rgba(90,70,55,.08);box-shadow:var(--shadow-soft)}
     .map-card svg{width:100%;display:block;border-radius:16px;background:linear-gradient(180deg,#fffbf5,#f2e7d8)}
     .google-map-frame{height:clamp(220px,48vw,330px);border-radius:16px;overflow:hidden;border:1px solid rgba(90,70,55,.1);box-shadow:var(--shadow-soft);background:#fff}
-    .google-map-frame iframe{width:100%;height:100%;border:0;display:block}
+    .google-map-frame iframe{width:100%;height:100%;border:0;display:block;pointer-events:none}
     .map-note{margin:9px 4px 0;color:var(--muted);font-size:clamp(10px,2.3vw,13px);line-height:1.55;text-align:center}
     .map-label{font-family:"LXGW WenKai TC","Noto Serif TC",serif;fill:#3e342f;font-size:18px;font-weight:700;letter-spacing:.04em}
     .map-small{fill:#75685d;font-size:14px;font-weight:600}
@@ -244,6 +247,12 @@
     .scripture-box p{margin:0;font-size:clamp(9px,2.05vw,11.5px);line-height:1.55;color:#6f6156;white-space:pre-line}
     .scripture-box::-webkit-scrollbar{width:5px}
     .scripture-box::-webkit-scrollbar-thumb{background:rgba(124,141,116,.28);border-radius:999px}
+    .scripture-box,
+    .lyrics-box{
+      -webkit-overflow-scrolling:touch;
+      overscroll-behavior:contain;
+      touch-action:pan-y;
+    }
     .song-list{display:grid;gap:8px;flex:1;min-height:0;grid-template-rows:1.25fr 1fr 1fr}
     .song-row{display:grid;grid-template-columns:94px 1fr;gap:10px;align-items:stretch;padding:9px 10px;border-radius:16px;background:rgba(255,250,244,.66);border:1px solid rgba(90,70,55,.07);min-height:0}
     .song-title{color:var(--accent);font-weight:700;font-size:clamp(11px,2.65vw,14px);line-height:1.35}
@@ -254,11 +263,11 @@
     .micro-note{margin:8px 0 0!important;font-size:clamp(8px,1.95vw,10px)!important;color:#8b7a6f!important;line-height:1.45!important}
 
     @media screen and (max-width:920px){
-      .deck{padding:0;background:#e9ded0;overflow-x:hidden}
+      .deck{padding:0;background:#e9ded0;overflow-x:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-y}
       .page{
         display:block!important;
         width:100vw!important;
-        min-height:auto!important;
+        min-height:177.777vw!important;
         height:auto!important;
         max-height:none!important;
         aspect-ratio:auto!important;
@@ -273,7 +282,7 @@
         display:flex;
         flex-direction:column;
         height:auto!important;
-        min-height:auto!important;
+        min-height:calc(177.777vw - 48px)!important;
       }
       .deck{display:flex;flex-direction:column;gap:0}
       .page + .page{margin-top:18px!important}
@@ -285,7 +294,7 @@
       .program-role{max-width:108px}
       .traffic-grid{gap:8px}
       .floral{width:128px;height:128px}
-      .photo-placeholder{width:min(58%,260px);margin-top:14px}
+      .photo-placeholder{width:min(60%,270px);margin-top:14px;padding:4px}
       .invite-card{padding:24px 20px}
       .venue{font-size:clamp(12px,2.95vw,15px);line-height:1.55}
       .divider{margin:16px auto}
@@ -293,6 +302,14 @@
       .time-info{font-size:clamp(11px,2.55vw,14px);letter-spacing:.02em}
       .hosts{padding-bottom:0;margin-top:14px;position:relative;z-index:3}
       .mini-card{font-size:clamp(10px,2.3vw,12.5px);padding:8px 8px}
+      .worship-layout{flex:0 0 auto!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;gap:12px!important;min-height:0!important}
+      .worship-layout .section-card{flex:none!important;display:block!important;min-height:auto!important}
+      .scripture-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;min-height:auto!important}
+      .scripture-box{min-height:150px!important;max-height:190px!important;overflow:auto!important}
+      .song-list{display:grid!important;grid-template-rows:none!important;gap:8px!important;min-height:auto!important}
+      .song-row{display:grid!important;grid-template-columns:86px 1fr!important;align-items:start!important;min-height:auto!important}
+      .lyrics-box{height:auto!important;max-height:95px!important;overflow:auto!important}
+      .lyrics-box.tall{max-height:118px!important}
       .song-row{grid-template-columns:82px 1fr;gap:8px}
       .scripture-grid{gap:8px}
     }
